@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HematoVision - Blood Cell Classification</title>
+
+    <style>
+        body {
+            text-align: center;
+            margin-top: 80px;
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+        }
+
+        h1 {
+            color: #b30000;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        .upload-box {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            width: 400px;
+            margin: auto;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        input[type="file"] {
+            padding: 10px;
+            border: 2px dashed #b30000;
+            border-radius: 10px;
+            background: #fff;
+            cursor: pointer;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 12px 25px;
+            font-size: 16px;
+            background-color: #b30000;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #800000;
+        }
+
+        #preview {
+            margin-top: 20px;
+            max-width: 200px;
+            display: none;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🩸 HematoVision</h1>
+    <h2>Blood Cell Classification using CNN + Transfer Learning</h2>
+
+    <div class="upload-box">
+        <!-- IMPORTANT: enctype + name="file" must match Flask -->
+        <form action="/predict" method="POST" enctype="multipart/form-data">
+            
+            <input 
+                type="file" 
+                name="file" 
+                accept="image/*" 
+                onchange="previewImage(event)" 
+                required
+            >
+
+            <br><br>
+
+            <!-- Image Preview -->
+            <img id="preview" src="#" alt="Image Preview"/>
+
+            <br>
+
+            <button type="submit">Upload & Predict</button>
+        </form>
+    </div>
+
+    <script>
+        function previewImage(event) {
+            const preview = document.getElementById('preview');
+            preview.src = URL.createObjectURL(event.target.files[0]);
+            preview.style.display = "block";
+        }
+    </script>
+
+</body>
+</html>

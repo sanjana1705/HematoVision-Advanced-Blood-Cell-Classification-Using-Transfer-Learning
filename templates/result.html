@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prediction Result - HematoVision</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial;
+            background-color: #f4f6f8;
+            margin-top: 50px;
+        }
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            display: inline-block;
+            box-shadow: 0px 0px 20px rgba(0,0,0,0.1);
+        }
+        img {
+            width: 250px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        h1 {
+            color: #c0392b;
+        }
+        h2 {
+            color: #2c3e50;
+        }
+        .btn {
+            padding: 12px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .upload { background-color: #3498db; color: white; }
+        .home { background-color: #2ecc71; color: white; }
+        .info { background-color: #9b59b6; color: white; }
+
+        .btn:hover {
+            transform: scale(1.05);
+            opacity: 0.9;
+        }
+
+        #infoBox {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            background: #ecf0f1;
+            border-radius: 10px;
+        }
+    </style>
+
+    <script>
+        function showInfo() {
+            var box = document.getElementById("infoBox");
+            if (box.style.display === "none") {
+                box.style.display = "block";
+            } else {
+                box.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <div class="card">
+        <h1>🩸 HematoVision</h1>
+        <h2>Prediction Result</h2>
+
+        <h3>Predicted Blood Cell Type:</h3>
+        <h2 style="color:#e74c3c;">{{ prediction }}</h2>
+
+        <img src="{{ img_path }}" alt="Uploaded Image">
+
+        <br>
+
+        <!-- Buttons -->
+        <a href="/">
+            <button class="btn upload">🔄 Upload Another Image</button>
+        </a>
+
+        <a href="/">
+            <button class="btn home">🏠 Go to Home</button>
+        </a>
+
+        <button class="btn info" onclick="showInfo()">📊 Show Class Info</button>
+
+        <div id="infoBox">
+            <h3>Blood Cell Classes Info</h3>
+            <p><b>Neutrophil:</b> Helps fight infections</p>
+            <p><b>Lymphocyte:</b> Important for immune response</p>
+            <p><b>Eosinophil:</b> Involved in allergic reactions</p>
+            <p><b>Monocyte:</b> Destroys harmful pathogens</p>
+        </div>
+
+    </div>
+
+</body>
+</html>
